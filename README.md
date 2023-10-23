@@ -24,3 +24,6 @@ b) alle "." (Punkt) durch "," (Komma, Beistrich) ersetzen.
 
 Dann kann man die data.csv problemlos mit Excel öffnen.
 
+Schöne Grüsse
+
+Lalit Kaltenbach
