@@ -1,0 +1,7 @@
+Script im  Terminal unabhängig ausführen
+
+nohup /home/{user}/airQ/get_data.sh < /dev/null &
+
+CronJob Eintrag
+
+@reboot nohup /home/benutzer/airQ/get_cron.sh < /dev/null &

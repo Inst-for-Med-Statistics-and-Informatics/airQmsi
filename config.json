@@ -1,0 +1,15 @@
+{
+    "geopos": { 
+            "lat": 47.26003, 
+            "long": 11.38777 
+    },
+    "TimeServer": "time1.i-med.ac.at",
+    "RoomHeight": 4.2,
+    "RoomArea": 9.40,
+    "country_code": "DE",
+    "Altitude": [588.0, 13.0],
+    "SecondsMeasurementDelay": 10,
+    "Averaging": 1,
+    "deactivated_sensors": ["fahrenheit"]
+    "reset": true
+}
