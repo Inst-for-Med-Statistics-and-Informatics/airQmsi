@@ -3,32 +3,24 @@ PHP Script zum Speichern der air-Q-Daten in eine Textdatei
 
 Hallo zusammen,
 
-wir an der Medizinischen Universität Innsbruck,
-verwenden den air-Q Science.
+wir an der Medizinischen Universität Innsbruck, verwenden den air-Q Science.
 
 Im Zuge dessen hab ich für uns eine Script-Set auf PHP basis erstellt, mit dem man folgendes machen kann:
 
 a) Automatisches Speichern der air-Q-Daten in eine Text-Datei (Intervall kann spezifiert werden)
 b) Web-basiertes auslesen der air-Q-Daten
+c) SPSS Label-Datei
 
-Die Dokumentation dazu findet man unter:
-air-Q-MUI-Dokumentation (http://www.i-med.ac.at/msig/forschung/airQ/airQmui_Doku.pdf)
+Die Dokumentation dazu findet man im Ordner PDF.
 
-Die notwendigen Dateien findet man unter:
-air-Q-MUI-Dateien (http://www.i-med.ac.at/msig/forschung/airQ/airQmui.zip)
+@SPSS
+Im Statistik-Programm SPSS kann man die Daten aus der data.csv importieren, dann mittels "Dateneigenschaften kopieren", kann man die Feldbeschriftungen aus der SPSS Label-Datei (data_spss_label.sav) mit dem Datensatz zusammenführen
 
-PS: In der ZIP-Datei ist auch eine SPSS Label-Datei, sprich wenn man die .csv-Datei in das Statistik-Programm SPSS importiert, kann man mit der Lable-Datei die Beschriftungen der Felder aktualisieren :)
+@Excel
+In der vom Script erzeugten data.csv werden wird "." (Punkt) als Dezimaltrenner verwendet, womit Excel ein Problem hat, denn diese Zahlen werden automatisch beim Öffnen in einen Datumswert umgewandelt. Wenn man diesen dann wieder in eine Zahl zurückwandelt erhält man einen FALSCHEN Wert. Daher folgender TIPP:
 
-Ein Hinweis am Rande:
+a) data.csv mit einem Texteditor (z.B. Notepad) öffnen
+b) alle "." (Punkt) durch "," (Komma, Beistrich) ersetzen.
 
-Die Dezimalzahlen werden mit "." (Punkt) als Dezimalzeichen in die .csv-Datei eingetragen, das macht bei Excel Probleme, da das Programm die Werte dann teilweise in Datums-Werte umwandelt. Daher:
+Dann kann man die data.csv problemlos mit Excel öffnen.
 
-Um die Daten in Excel zu importieren bzw. mit Excel zu öffnen:
-a) .csv mit einem Texteditor (Notepad z.B.) öffnen
-b) "." (Punkt) durch "," (Komma, Beistrich) ersetzten
-
-.. keine Angst, der "." kommt wirklich nur bei den Dezimalzahlen in der .csv-Datei vor, sonst nirgendwo :)
-
-Schöne Grüße
-
-Lalit Kaltenbach
