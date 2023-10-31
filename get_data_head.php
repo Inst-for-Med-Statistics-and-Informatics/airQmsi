@@ -47,8 +47,10 @@ $output = decrypt($json["content"],$password);
 $arrdata = json_decode($output, TRUE);
       
 $fd = fopen("data.csv","w");
+$lg = fopen("data_log.csv";"w");
 $zeile = "\n";
 $head  = "\n";
+$loger = "Script_run;measuretime;timestamp;\n".date("d.m.Y h:i:s").";";
 foreach($arrdata as $key => $value) {
     switch ($key) {
         case "cnt0_3":
@@ -83,20 +85,28 @@ foreach($arrdata as $key => $value) {
         case "DeviceID":
         case "dHdt":
         case "health":
-        case "measuretime":
+        //case "measuretime":
         case "performance":
         case "Status":
-        case "timestamp":
+        //case "timestamp":
         case "TypPS":
         case "uptime":
             $zeile .= $value.";";
             $head .= $key."_value;";
             break;    
+        case "measuretime":
+        case "timestamp":
+            $zeile .= $value.";";
+            $loger .= $value.";";
+            $head .= $key."_value;";
+            break;  
     }
 }
 fwrite($fd,$head);
 fwrite($fd,$zeile);
+fwrite($lg,$loger);
 fclose($fd);
+fclose($lg);
 print_r($head);
 print_r($zeile);
 ?>

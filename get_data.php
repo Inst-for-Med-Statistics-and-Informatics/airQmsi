@@ -139,11 +139,13 @@ switch($param) {
 }             
 
 // Debug: Url
-print "<table width='100%' style='background: #CCCCCC;'>";
-print "<tr><td><b>URL:</b></td>";
-print "<td><a href='$url' target='_blank'>$url</a></td></tr>";
-print "</table>";
-print "<hr />";
+if($console!=true) {
+ print "<table width='100%' style='background: #CCCCCC;'>";
+ print "<tr><td><b>URL:</b></td>";
+ print "<td><a href='$url' target='_blank'>$url</a></td></tr>";
+ print "</table>";
+ print "<hr />";
+}
 
 // Possible comands: ping, config, data, log, dirbuff, file&request=..
 $curl = curl_init(); 
@@ -153,7 +155,7 @@ $output = "";
 $output = curl_exec($curl);
 curl_close($curl);
 $json = json_decode($output, true);
-switch($_GET['param']) {
+switch($param) {
     // Bei einigen Parameter bedarf es keiner entschlüsselung
     case "blink":
     case "playsound":
@@ -168,7 +170,10 @@ $arrdata = json_decode($output, TRUE);
       
 if($console==true && $param=="") { 
   $fd = fopen("data.csv","a"); 
+  $lg = fopen("data_log.csv","a");
+  $head  = "";
   $zeile = "\n";
+  $loger = "\n".date("d.m.Y h:i:s").";";
   foreach($arrdata as $key => $value) {
       switch ($key) {
         case "cnt0_3":
@@ -203,19 +208,27 @@ if($console==true && $param=="") {
         case "DeviceID":
         case "dHdt":
         case "health":
-        case "measuretime":
+        //case "measuretime":
         case "performance":
         case "Status":
-        case "timestamp":
+        //case "timestamp":
         case "TypPS":
         case "uptime":
             $zeile .= $value.";";
             $head .= $key."_value;";
-            break;   
+            break;
+        case "measuretime":
+        case "timestamp":
+            $zeile .= $value.";";
+            $loger .= $value.";";
+            $head .= $key."_value;";
+            break;      
       }
   }  
   fwrite($fd,$zeile);
+  fwrite($lg,$loger);
   fclose($fd);
+  fclose($lg);
 } else {
   print "<pre>";
   print_r($arrdata);
