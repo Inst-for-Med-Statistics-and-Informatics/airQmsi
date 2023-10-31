@@ -50,7 +50,7 @@ $fd = fopen("data.csv","w");
 $lg = fopen("data_log.csv";"w");
 $zeile = "\n";
 $head  = "\n";
-$loger = "Script_run;measuretime;timestamp;\n".date("d.m.Y h:i:s").";";
+$loger = "Script_run;measuretime;timestamp;\n".date("d.m.Y H:i:s").";";
 foreach($arrdata as $key => $value) {
     switch ($key) {
         case "cnt0_3":

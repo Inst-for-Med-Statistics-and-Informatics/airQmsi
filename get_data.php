@@ -173,7 +173,7 @@ if($console==true && $param=="") {
   $lg = fopen("data_log.csv","a");
   $head  = "";
   $zeile = "\n";
-  $loger = "\n".date("d.m.Y h:i:s").";";
+  $loger = "\n".date("d.m.Y H:i:s").";";
   foreach($arrdata as $key => $value) {
       switch ($key) {
         case "cnt0_3":
